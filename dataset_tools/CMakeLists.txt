@@ -40,7 +40,6 @@ include_directories(
 
 
 add_library(${PROJECT_NAME}
-    src/bag_output.cpp
     src/bag_input.cpp
     src/run_pipeline.cpp
 )
