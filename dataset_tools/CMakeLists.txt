@@ -43,9 +43,6 @@ add_library(${PROJECT_NAME}
     src/bag_output.cpp
     src/bag_input.cpp
     src/run_pipeline.cpp
-    src/point_cloud_features_pipeline.cpp
-    src/icp_matcher_pipeline.cpp
-    src/behavior_tree_pipeline.cpp
 )
 
 

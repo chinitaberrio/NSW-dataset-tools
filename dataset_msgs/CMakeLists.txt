@@ -8,10 +8,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 #find catkin packages
 find_package(catkin REQUIRED COMPONENTS
   std_msgs
-  nav_msgs
-  sensor_msgs
-  tf2_sensor_msgs
-  tf2_geometry_msgs
   message_generation
 )
 
@@ -20,9 +16,6 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
         FILES
         DatasetEvent.msg
-        Observation.msg
-        Innovation.msg
-        LocaliserStats.msg
 )
 
 ## Generate added messages and services with any dependencies listed here
@@ -34,7 +27,7 @@ generate_messages(
 
 catkin_package(
   INCLUDE_DIRS include
-  CATKIN_DEPENDS nav_msgs sensor_msgs std_msgs sensor_msgs message_runtime
+  CATKIN_DEPENDS sensor_msgs std_msgs sensor_msgs message_runtime
 )
 
 
