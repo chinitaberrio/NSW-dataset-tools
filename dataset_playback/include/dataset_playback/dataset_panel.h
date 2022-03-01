@@ -18,7 +18,7 @@
 #include <QPushButton>
 #include <QCheckBox>
 
-#include <h264_bag_playback/h264_bag_playback.hpp>
+#include <mp4_bag_playback/mp4_bag_playback.hpp>
 
 #include <QTreeView>
 #include "treemodel.h"
@@ -96,7 +96,7 @@ public:
 
     PLAYBACK_CONTROL current_state;
 
-    dataset_toolkit::h264_bag_playback bag_playback;
+    dataset_toolkit::mp4_bag_playback bag_playback;
 
     DatasetThread() {current_state = PLAYBACK_LOADING;}
 

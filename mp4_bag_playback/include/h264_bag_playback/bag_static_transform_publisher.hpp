@@ -2,8 +2,8 @@
 // Created by stew on 16/05/21.
 //
 
-#ifndef H264_BAG_PLAYBACK_BAGSTATICTRANSFORMPUBLISHER_HPP
-#define H264_BAG_PLAYBACK_BAGSTATICTRANSFORMPUBLISHER_HPP
+#ifndef MP4_BAG_PLAYBACK_BAGSTATICTRANSFORMPUBLISHER_HPP
+#define MP4_BAG_PLAYBACK_BAGSTATICTRANSFORMPUBLISHER_HPP
 
 #include <tf2_ros/static_transform_broadcaster.h>
 #include <tf2/buffer_core.h>
@@ -16,7 +16,7 @@ class BagStaticTransformBroadcaster : public tf2_ros::StaticTransformBroadcaster
 public:
 
 /**
- * @brief h264_bag_playback::StaticTfPublisher extract and publish /tf_static and store in member tf buffer transformer_
+ * @brief mp4_bag_playback::StaticTfPublisher extract and publish /tf_static and store in member tf buffer transformer_
  * only reads in the first 10 /tf_static messages and discard all msgs after 10, to prevent a node spaming /tf_static msgs.
  * @param bag bag that contains static tf
  * @param do_publish if want to publish /tf_static defaut to true.
@@ -106,4 +106,4 @@ public:
 
 };
 
-#endif //H264_BAG_PLAYBACK_BAGSTATICTRANSFORMPUBLISHER_HPP
+#endif //MP4_BAG_PLAYBACK_BAGSTATICTRANSFORMPUBLISHER_HPP

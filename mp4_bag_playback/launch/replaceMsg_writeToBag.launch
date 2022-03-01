@@ -1,6 +1,6 @@
 <launch>
 
-<node pkg="h264_bag_playback" type="replaceMsg_writeToBag" name="replaceMsg_writeToBag" output="screen" required="true">
+<node pkg="mp4_bag_playback" type="replaceMsg_writeToBag" name="replaceMsg_writeToBag" output="screen" required="true">
 
     <param name="output_width" value="640" />
     <param name="output_height" value="480" />

@@ -5,16 +5,16 @@
 
   #include <math.h>
 
-  #include "h264_bag_playback.hpp"
+  #include "mp4_bag_playback.hpp"
   #include "bag_data.h"
 
 
-  class DirectPlayback : public dataset_toolkit::h264_bag_playback {
+  class DirectPlayback : public dataset_toolkit::mp4_bag_playback {
 
   public:
 
     DirectPlayback(std::string bag_file)
-        : h264_bag_playback() {
+        : mp4_bag_playback() {
 
       private_nh.setParam("bag_file", bag_file);
       init_playback();

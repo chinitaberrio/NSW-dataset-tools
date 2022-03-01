@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(h264_bag_playback)
+project(mp4_bag_playback)
 
 find_package(catkin REQUIRED COMPONENTS nodelet
 	rosbag
@@ -45,7 +45,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 # Create the nodelet tutorial library
 add_executable(${PROJECT_NAME}_node
-		src/h264_bag_playback.cpp
+		src/mp4_bag_playback.cpp
 		src/video.cpp
 		src/helper_functions.cpp)
 
@@ -54,7 +54,7 @@ target_link_libraries(${PROJECT_NAME}_node
 		${OpenCV_LIBS})
 
 add_library(${PROJECT_NAME}
-		src/h264_bag_playback.cpp
+		src/mp4_bag_playback.cpp
 		src/video.cpp
 		src/helper_functions.cpp
 		src/bag_container.cpp)
@@ -104,5 +104,5 @@ catkin_add_gtest(${PROJECT_NAME}-test
 		)
 
 if(TARGET ${PROJECT_NAME}-test)
-	target_link_libraries(${PROJECT_NAME}-test h264_bag_playback)
+	target_link_libraries(${PROJECT_NAME}-test mp4_bag_playback)
 endif()

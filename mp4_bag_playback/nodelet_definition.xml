@@ -1,0 +1,7 @@
+<library path="lib/libmp4_bag_playback">
+  <class name="dataset_toolkit/mp4_bag_playback" type="dataset_toolkit::mp4_bag_playback" base_class_type="nodelet::Nodelet">
+    <description> 
+      description of the nodelet goes here
+    </description>
+  </class>
+</library>

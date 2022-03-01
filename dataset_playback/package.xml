@@ -12,7 +12,7 @@
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>qtbase5-dev</build_depend>
-  <depend>h264_bag_playback</depend>
+  <depend>mp4_bag_playback</depend>
   <depend>dataset_tools</depend>
   <depend>dataset_msgs</depend>
   <depend>libqt5-core</depend>

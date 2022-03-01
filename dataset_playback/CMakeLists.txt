@@ -30,7 +30,7 @@ find_package(OpenCV 3 REQUIRED)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  h264_bag_playback
+  mp4_bag_playback
   dataset_tools
   dataset_msgs
 )

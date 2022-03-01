@@ -1,4 +1,4 @@
-#include "h264_bag_playback.hpp"
+#include "mp4_bag_playback.hpp"
 #include <glob.h>
 
 #include "boost/date_time/posix_time/posix_time.hpp"
@@ -34,10 +34,10 @@
 int main(int argc, char **argv) {
 
   //Initialize Node and handles
-  ros::init(argc, argv, "h264_bag_playback_node");
+  ros::init(argc, argv, "mp4_bag_playback_node");
   ros::NodeHandle n;
 
-  dataset_toolkit::h264_bag_playback bag_tools;
+  dataset_toolkit::mp4_bag_playback bag_tools;
 
   bag_tools.init_playback();
   bag_tools.ReadFromBag();
@@ -50,7 +50,7 @@ namespace dataset_toolkit
 {
 
 
-h264_bag_playback::h264_bag_playback() :
+mp4_bag_playback::mp4_bag_playback() :
         transformer_(std::make_shared<tf2_ros::Buffer>(ros::Duration(200.))),
         horizonInBuffer(false),
         private_nh("~"),
@@ -62,19 +62,19 @@ h264_bag_playback::h264_bag_playback() :
 }
 
 
-void h264_bag_playback::onInit() {
-  timer = public_nh.createTimer(ros::Duration(0.1), &h264_bag_playback::timerCallback, this);
+void mp4_bag_playback::onInit() {
+  timer = public_nh.createTimer(ros::Duration(0.1), &mp4_bag_playback::timerCallback, this);
 }
 
 
-void h264_bag_playback::timerCallback(const ros::TimerEvent& event) {
+void mp4_bag_playback::timerCallback(const ros::TimerEvent& event) {
   ReadFromBag();
 }
 
 
-void h264_bag_playback::init_playback() {
+void mp4_bag_playback::init_playback() {
 
-    // parameter to scale the size of the images from the h264 playback
+    // parameter to scale the size of the images from the mp4 playback
     scaled_width = 0;
     scaled_height = 0;
     private_nh.param("output_width", scaled_width, 0);
@@ -276,14 +276,14 @@ void h264_bag_playback::init_playback() {
 
 
 
-void h264_bag_playback::CloseBags() {
+void mp4_bag_playback::CloseBags() {
   bag_writer.CloseBags();
 }
 
 
 
 
-void h264_bag_playback::OpenBags() {
+void mp4_bag_playback::OpenBags() {
 
   // generate the views and advertise each of the topics to publish
   for (auto bag: bags) {
@@ -367,7 +367,7 @@ void h264_bag_playback::OpenBags() {
 
 
 
-void h264_bag_playback::SeekTime(ros::Time seek_time) {
+void mp4_bag_playback::SeekTime(ros::Time seek_time) {
 
   ros::Time earliest_time = ros::TIME_MAX;
 
@@ -410,7 +410,7 @@ void h264_bag_playback::SeekTime(ros::Time seek_time) {
 
 
 
-bool h264_bag_playback::ReadNextPacket() {
+bool mp4_bag_playback::ReadNextPacket() {
 
   // find the next in time order
   ros::Time earliest_time = ros::TIME_MAX;
@@ -706,7 +706,7 @@ bool h264_bag_playback::ReadNextPacket() {
 }
 
 
-void h264_bag_playback::ReadFromBag() {
+void mp4_bag_playback::ReadFromBag() {
 
   OpenBags();
 
@@ -724,26 +724,26 @@ void h264_bag_playback::ReadFromBag() {
 
 
 void
-h264_bag_playback::CameraInfoPublisher(ros::Publisher &publisher, const rosbag::MessageInstance &message,
+mp4_bag_playback::CameraInfoPublisher(ros::Publisher &publisher, const rosbag::MessageInstance &message,
                                        const sensor_msgs::CameraInfoConstPtr &scaled_info_msg) {
   publisher.publish(scaled_info_msg);
 }
 
 
 void
-h264_bag_playback::MessagePublisher(ros::Publisher &publisher, const rosbag::MessageInstance &message) {
+mp4_bag_playback::MessagePublisher(ros::Publisher &publisher, const rosbag::MessageInstance &message) {
   publisher.publish(message);
 }
 
 
 void
-h264_bag_playback::ImagePublisher(image_transport::Publisher &publisher, const sensor_msgs::ImageConstPtr &message) {
+mp4_bag_playback::ImagePublisher(image_transport::Publisher &publisher, const sensor_msgs::ImageConstPtr &message) {
   publisher.publish(message);
 }
 
 
 void
-h264_bag_playback::AdvertiseTopics(std::shared_ptr<rosbag::View> view) {
+mp4_bag_playback::AdvertiseTopics(std::shared_ptr<rosbag::View> view) {
 
   // Create a publisher and advertise for all of our message types
   for(const rosbag::ConnectionInfo* c: view->getConnections())
@@ -771,6 +771,6 @@ h264_bag_playback::AdvertiseTopics(std::shared_ptr<rosbag::View> view) {
 }
 
 
-  PLUGINLIB_EXPORT_CLASS(dataset_toolkit::h264_bag_playback, nodelet::Nodelet);
+  PLUGINLIB_EXPORT_CLASS(dataset_toolkit::mp4_bag_playback, nodelet::Nodelet);
 
 }

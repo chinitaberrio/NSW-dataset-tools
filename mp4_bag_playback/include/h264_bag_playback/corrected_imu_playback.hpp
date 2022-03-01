@@ -2,8 +2,8 @@
 // Created by stew on 16/05/21.
 //
 
-#ifndef H264_BAG_PLAYBACK_CORRECTED_IMU_PLAYBACK_HPP
-#define H264_BAG_PLAYBACK_CORRECTED_IMU_PLAYBACK_HPP
+#ifndef MP4_BAG_PLAYBACK_CORRECTED_IMU_PLAYBACK_HPP
+#define MP4_BAG_PLAYBACK_CORRECTED_IMU_PLAYBACK_HPP
 
 #include <sensor_msgs/Imu.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
@@ -88,4 +88,4 @@ public:
 };
 
 
-#endif //H264_BAG_PLAYBACK_CORRECTED_IMU_PLAYBACK_HPP
+#endif //MP4_BAG_PLAYBACK_CORRECTED_IMU_PLAYBACK_HPP

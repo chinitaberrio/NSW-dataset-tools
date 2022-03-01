@@ -378,9 +378,9 @@ void DatasetPanel::convertPressed() {
 std::cout << "trying this " << std::endl;
   if (workerThread && workerThread->current_state == DatasetThread::PLAYBACK_PAUSE) {
     std::cout << "starting conversion" << std::endl;
-    //execlp("/catkin/src/dataset_metapackage/dataset_tools/h264_bag_playback/scripts/convert_folder.sh",
-/*    execv("/catkin/src/dataset_metapackage/dataset_tools/h264_bag_playback/scripts/convert_folder.sh",
-           "/catkin/src/dataset_metapackage/dataset_tools/h264_bag_playback/scripts/convert_folder.sh",
+    //execlp("/catkin/src/dataset_metapackage/dataset_tools/mp4_bag_playback/scripts/convert_folder.sh",
+/*    execv("/catkin/src/dataset_metapackage/dataset_tools/mp4_bag_playback/scripts/convert_folder.sh",
+           "/catkin/src/dataset_metapackage/dataset_tools/mp4_bag_playback/scripts/convert_folder.sh",
            boost::filesystem::path(workerThread->bag_playback.bags.front()->bag_file_name).c_str());
     std::cout << "finished conversion" << std::endl;
 */  }

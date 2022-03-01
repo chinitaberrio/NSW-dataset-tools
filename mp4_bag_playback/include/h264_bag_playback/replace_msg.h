@@ -24,7 +24,7 @@
 //#include <tf2/LinearMath/Transform.h>
 //#include <tf2_ros/transform_broadcaster.h>
 
-#include "h264_bag_playback.hpp"
+#include "mp4_bag_playback.hpp"
 //#include "bag_container.hpp"
 //#include "video.hpp"
 
@@ -33,7 +33,7 @@ namespace dataset_toolkit
 {
 
 
-class replace_msg : public h264_bag_playback  {
+class replace_msg : public mp4_bag_playback  {
 
 public:
     replace_msg();

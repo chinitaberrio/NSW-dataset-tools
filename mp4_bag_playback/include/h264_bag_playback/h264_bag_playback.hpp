@@ -1,5 +1,5 @@
-#ifndef H264_BAG_PLAYBACK_HEADER
-#define H264_BAG_PLAYBACK_HEADER
+#ifndef MP4_BAG_PLAYBACK_HEADER
+#define MP4_BAG_PLAYBACK_HEADER
 
 #include <iostream>
 #include <algorithm>
@@ -212,10 +212,10 @@ pubCamInfo.publish(  camera_info ); */
 
   };
 
-  class h264_bag_playback : public nodelet::Nodelet {
+  class mp4_bag_playback : public nodelet::Nodelet {
   public:
 
-    h264_bag_playback();
+    mp4_bag_playback();
 
     void init_playback();
 
