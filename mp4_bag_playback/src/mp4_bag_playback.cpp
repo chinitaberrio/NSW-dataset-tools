@@ -164,7 +164,7 @@ void mp4_bag_playback::init_playback() {
 
     // determine whether to apply a time bias correction
     // (some datasets have an offset between the nvidia computer time and the ROS time)
-    std::map<std::string, double> dataset_time_correction;
+    /*std::map<std::string, double> dataset_time_correction;
     private_nh.getParam("dataset_time_correction", dataset_time_correction);
 
     ros::Duration time_offset(0.0);
@@ -175,7 +175,7 @@ void mp4_bag_playback::init_playback() {
     }
     else {
       ROS_INFO_STREAM("No time correction parameters available for this dataset");
-    }
+    }*/
 
 
     // assume the "main" bag covers the most important times
@@ -324,9 +324,9 @@ void mp4_bag_playback::OpenBags() {
   ROS_INFO_STREAM("Loaded " << dataset_event_count << " events");
 
 
-  // creat a tf bag view object so that we can view future tf msgs
+  // create a tf bag view object so that we can view future tf msgs
   std::vector<std::string> tf_topics{"tf", "/tf"};
-  std::vector<std::string> imu_topics{"vn100/imu", "/vn100/imu"};
+  std::vector<std::string> imu_topics{"ibeo_interface/xsense/imu", "/ibeo_interface/xsense/imu"};
 
 
   for (auto bag: bags) {
@@ -614,6 +614,10 @@ bool mp4_bag_playback::ReadNextPacket() {
     MessagePublisher(pub_iter->second, m);
     ros::spinOnce();
   }
+ /* else if (topic == "point_cloud packets"){
+  }
+  else if (topic == "imu_packets")
+  */
   else if (topic == "vn100/imu" || topic == "/vn100/imu" || topic == "xsens/IMU" || topic == "/xsens/IMU") {
 
     auto msg = m.instantiate<sensor_msgs::Imu>();

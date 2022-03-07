@@ -35,6 +35,12 @@
 #include "bag_container.hpp"
 #include "video.hpp"
 
+#include "ouster/lidar_scan.h"
+#include "ouster/types.h"
+#include "ouster_ros/OSConfigSrv.h"
+#include "ouster_ros/PacketMsg.h"
+#include "ouster_ros/ros.h"
+
 
 namespace dataset_toolkit {
 
@@ -289,13 +295,15 @@ pubCamInfo.publish(  camera_info ); */
     std::map <std::string, ros::Publisher> publishers;
 
 
-    // These are hard coded for the time being to fit the ACFR campus dataset
-    std::map <std::string, std::string> frame_id_dict = {{"A0", "gmsl_centre_link"},
-                                                         {"A1", "gmsl_left_link"},
-                                                         {"A2", "gmsl_right_link"},
-                                                         {"A3", "gmsl_back_link"},
-                                                         {"B0", "gmsl_left_side_link"},
-                                                         {"B1", "gmsl_right_side_link"}};
+    // These are hard coded for the time being to fit the NSW dataset
+    std::map <std::string, std::string> frame_id_dict = {{"port_a/camera_0", "port_a_camera_0_link"},
+                                                         {"port_a/camera_1", "port_a_camera_1_link"},
+                                                         {"port_b/camera_0", "port_b_camera_0_link"},
+                                                         {"port_b/camera_1", "port_b_camera_1_link"},
+                                                         {"port_c/camera_0", "port_c_camera_0_link"},
+                                                         {"port_c/camera_1", "port_c_camera_1_link"},
+                                                         {"port_d/camera_0", "port_d_camera_0_link"},
+                                                         {"port_d/camera_1", "port_d_camera_1_link"}};
 
 
     virtual void MessagePublisher(ros::Publisher &publisher, const rosbag::MessageInstance &message);

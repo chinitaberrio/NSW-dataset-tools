@@ -10,8 +10,8 @@ if __name__ == '__main__':
 
     ap = argparse.ArgumentParser()
     ap.add_argument("-b", "--bag_file", required=True, help="The Ros bag you would like to extract images")
-    ap.add_argument("-v", "--video", required=True, help="The directory for h264 video file")
-    ap.add_argument("-o", "--output_file", default='/home/wei/Downloads/video.avi', help="save the rectified videos")
+    ap.add_argument("-v", "--video", required=True, help="The directory for mp4 video file")
+    ap.add_argument("-o", "--output_file", default='output_video.avi', help="save the rectified videos")
     args = vars(ap.parse_args())
 
     if not args["video"]:
