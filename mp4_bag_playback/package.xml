@@ -21,6 +21,7 @@
   <depend>image_transport</depend>
   <depend>tf2_ros</depend>
   <depend>tf2_sensor_msgs</depend>
+  <depend>ouster_ros</depend>
 
 <!--
   <build_depend>nodelet</build_depend>

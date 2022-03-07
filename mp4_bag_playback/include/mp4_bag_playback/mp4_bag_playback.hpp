@@ -149,7 +149,6 @@ namespace dataset_toolkit {
 
         output_videos[topic_name] = cv::VideoWriter();
         message_count[topic_name] = 1;
-        //output_videos[topic_name].open(video_file_name, cv::VideoWriter::fourcc('H','2','6','4'), 30, cv::Size(cv_ptr->image.cols,cv_ptr->image.rows));
         output_videos[topic_name].open(video_file_name, cv::VideoWriter::fourcc('X','V','I','D'), 30, cv::Size(cv_ptr->image.cols,cv_ptr->image.rows));
 
         if(!output_videos[topic_name].isOpened()) { // check if we succeeded

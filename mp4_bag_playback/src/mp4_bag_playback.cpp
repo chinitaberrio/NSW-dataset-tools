@@ -614,9 +614,35 @@ bool mp4_bag_playback::ReadNextPacket() {
     MessagePublisher(pub_iter->second, m);
     ros::spinOnce();
   }
- /* else if (topic == "point_cloud packets"){
+  else if (topic == "point_cloud packets"){
+
+    auto info = ouster::sensor::parse_metadata("/home/stephany/catkin_dstools/src/dataset_tools/mp4_bag_playback/config/metadata.json"); 
+    uint32_t H = info.format.pixels_per_column;
+    uint32_t W = info.format.columns_per_frame;
+    auto udp_profile_lidar = info.format.udp_profile_lidar;
+
+    ouster::LidarScan ls{W, H, udp_profile_lidar};
+    ouster_ros::Cloud cloud{W, H};
+    //auto msg = m.instantiate<PacketMsg>();
+    auto pf = ouster::sensor::get_format(info);
+    ouster::ScanBatcher batch(W, pf);
+    /*auto lidar_handler = [&](const PacketMsg& msg) mutable {
+        if (batch(pm.buf.data(), ls)) {
+            auto h = std::find_if(
+                ls.headers.begin(), ls.headers.end(), [](const auto& h) {
+                    return h.timestamp != std::chrono::nanoseconds{0};
+                });
+            if (h != ls.headers.end()) {
+                for (int i = 0; i < n_returns; i++) {
+                    scan_to_cloud(xyz_lut, h->timestamp, ls, cloud, i);
+                    lidar_pubs[i].publish(ouster_ros::cloud_to_cloud_msg(
+                        cloud, h->timestamp, sensor_frame));
+                }
+            }
+        }
+    }*/
   }
-  else if (topic == "imu_packets")
+/*  else if (topic == "imu_packets")
   */
   else if (topic == "vn100/imu" || topic == "/vn100/imu" || topic == "xsens/IMU" || topic == "/xsens/IMU") {
 
@@ -661,7 +687,6 @@ bool mp4_bag_playback::ReadNextPacket() {
   }
   else {
     // publish the remaining messages
-    //pub_iter->second.publish(m);
     MessagePublisher(pub_iter->second, m);
     ros::spinOnce();
   }

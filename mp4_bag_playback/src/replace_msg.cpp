@@ -133,9 +133,7 @@ replace_msg::MessagePublisher(ros::Publisher &publisher, const rosbag::MessageIn
           // compute horizon transforms from imu msg and publish them
           geometry_msgs::TransformStamped baselink, footprint;
           imu2horizontf(msg, baselink, footprint);
-//          tf_broadcaster.sendTransform(baselink);
-//          tf_broadcaster.sendTransform(footprint);
-
+          
           tf2_msgs::TFMessage tf_horizon;
           tf_horizon.transforms.push_back(baselink);
           tf_horizon.transforms.push_back(footprint);

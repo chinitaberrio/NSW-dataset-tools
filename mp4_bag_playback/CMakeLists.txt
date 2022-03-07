@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(mp4_bag_playback)
 
+find_package(Eigen3 REQUIRED)
+find_package(PCL REQUIRED COMPONENTS common)
+find_package(tf2_eigen REQUIRED)
+
 find_package(catkin REQUIRED COMPONENTS nodelet
 	rosbag
 	#rosbag_storage
@@ -10,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS nodelet
 	tf2_sensor_msgs
 	image_transport
 	dataset_msgs
+	pcl_conversions
 	std_msgs
 	cv_bridge
 	nav_msgs
@@ -18,14 +23,20 @@ find_package(catkin REQUIRED COMPONENTS nodelet
 
 find_package(OpenCV REQUIRED)
 
+set(_ouster_ros_INCLUDE_DIRS
+  "../../ouster_example/ouster_client/include;../../ouster_example/ouster_client/include/optional-lite")
+
 ## Setup include directories
-include_directories(${catkin_INCLUDE_DIRS},
+include_directories(${catkin_INCLUDE_DIRS}, 
+  ${_ouster_ros_INCLUDE_DIRS}
   include/${PROJECT_NAME}
   include)
 
+
+
 catkin_package(
   LIBRARIES ${PROJECT_NAME}
-	INCLUDE_DIRS include
+	INCLUDE_DIRS include ${_ouster_ros_INCLUDE_DIRS}
 	CATKIN_DEPENDS nodelet
 	roscpp
 	rosbag
@@ -41,6 +52,14 @@ catkin_package(
 	sensor_msgs
 	cv_bridge
 )
+
+set(_SAVE_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS})
+set(BUILD_SHARED_LIBS OFF)
+add_subdirectory(../../ouster_example/ouster_client ouster_client EXCLUDE_FROM_ALL)
+target_compile_options(ouster_client PRIVATE -Wno-deprecated-declarations)
+message(STATUS "Ouster SDK client: Using EIGEN_MAX_ALIGN_BYTES = 32")
+target_compile_definitions(ouster_client PUBLIC EIGEN_MAX_ALIGN_BYTES=32)
+set(BUILD_SHARED_LIBS ${_SAVE_BUILD_SHARED_LIBS})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
