@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS nodelet
 	std_msgs
 	cv_bridge
 	nav_msgs
+	ouster_ros
 	sensor_msgs)
 
 find_package(OpenCV REQUIRED)
@@ -36,6 +37,7 @@ catkin_package(
 	tf2_ros
 	tf2_sensor_msgs
 	nav_msgs
+	ouster_ros
 	sensor_msgs
 	cv_bridge
 )
